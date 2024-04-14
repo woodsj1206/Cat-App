@@ -61,16 +61,15 @@ class CatInformationFragment : Fragment() {
         val queue = Volley.newRequestQueue(context)
         val url = "https://api.thecatapi.com/v1/images/search?api_key=${apiKey}&breed_id=${sharedViewModel.catBreeds.value?.get(selectedItem)?.getString("id")}"
 
-        var imageUrl = ""
         val stringRequest = StringRequest(
             Request.Method.GET, url,
             { response ->
                 val catImageArray: JSONArray = JSONArray(response)
                 if (catImageArray.length() > 0) {
                     val catImage: JSONObject = catImageArray.getJSONObject(0)
-
+                    
                     if(catImage.has("url")){
-                        imageUrl = catImage.getString("url")
+                        val imageUrl = catImage.getString("url")
                         Glide.with(requireContext()).load(imageUrl).into(binding.ivCatImage)
                         sharedViewModel.setCatImageUrl(imageUrl)
                     }
