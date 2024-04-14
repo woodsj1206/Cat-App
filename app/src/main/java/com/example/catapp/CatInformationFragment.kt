@@ -67,7 +67,7 @@ class CatInformationFragment : Fragment() {
                 val catImageArray: JSONArray = JSONArray(response)
                 if (catImageArray.length() > 0) {
                     val catImage: JSONObject = catImageArray.getJSONObject(0)
-                    
+
                     if(catImage.has("url")){
                         val imageUrl = catImage.getString("url")
                         Glide.with(requireContext()).load(imageUrl).into(binding.ivCatImage)
