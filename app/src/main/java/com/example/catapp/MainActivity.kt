@@ -4,7 +4,7 @@ Author: woodsj1206 (https://github.com/woodsj1206)
 Description: A simple app that uses the CatAPI to display information about cats.
 Course: CIS 436
 Date Created: 4/10/24
-Last Modified: 4/13/24
+Last Modified: 4/14/24
 */
 package com.example.catapp
 

@@ -59,7 +59,7 @@ class CatInformationFragment : Fragment() {
 
     private fun fetchCatImage(selectedItem: String) {
         val queue = Volley.newRequestQueue(context)
-        val url = "https://api.thecatapi.com/v1/images/search?api_key=${apiKey}&breeds_id=${sharedViewModel.catBreeds.value?.get(selectedItem)?.getString("id")}"
+        val url = "https://api.thecatapi.com/v1/images/search?api_key=${apiKey}&breed_id=${sharedViewModel.catBreeds.value?.get(selectedItem)?.getString("id")}"
 
         var imageUrl = ""
         val stringRequest = StringRequest(

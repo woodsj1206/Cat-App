@@ -227,7 +227,7 @@
                     <androidx.cardview.widget.CardView
                         android:id="@+id/cvCatDescriptionShadow"
                         android:layout_width="300dp"
-                        android:layout_height="92dp"
+                        android:layout_height="175dp"
                         android:layout_marginTop="16dp"
                         android:layout_marginEnd="16dp"
                         app:cardBackgroundColor="@color/card_shadow_color"
@@ -239,7 +239,7 @@
                     <androidx.cardview.widget.CardView
                         android:id="@+id/cvCatDescription"
                         android:layout_width="300dp"
-                        android:layout_height="92dp"
+                        android:layout_height="175dp"
                         app:cardBackgroundColor="@color/card_color"
                         app:cardCornerRadius="15dp"
                         app:cardElevation="0dp"
@@ -252,7 +252,7 @@
 
                             <androidx.core.widget.NestedScrollView
                                 android:layout_width="272dp"
-                                android:layout_height="71.5dp"
+                                android:layout_height="154.5dp"
                                 android:fadeScrollbars="false"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
