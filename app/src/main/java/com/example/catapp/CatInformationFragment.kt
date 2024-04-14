@@ -15,7 +15,6 @@ import org.json.JSONArray
 import org.json.JSONObject
 import com.bumptech.glide.Glide
 
-
 class CatInformationFragment : Fragment() {
     private val sharedViewModel: SharedViewModel by activityViewModels()
 
@@ -62,20 +61,19 @@ class CatInformationFragment : Fragment() {
         val queue = Volley.newRequestQueue(context)
         val url = "https://api.thecatapi.com/v1/images/search?api_key=${apiKey}&breeds_id=${sharedViewModel.catBreeds.value?.get(selectedItem)?.getString("id")}"
 
+        var imageUrl = ""
         val stringRequest = StringRequest(
             Request.Method.GET, url,
             { response ->
                 val catImageArray: JSONArray = JSONArray(response)
                 if (catImageArray.length() > 0) {
                     val catImage: JSONObject = catImageArray.getJSONObject(0)
-                    var imageUrl = ""
 
                     if(catImage.has("url")){
                         imageUrl = catImage.getString("url")
+                        Glide.with(requireContext()).load(imageUrl).into(binding.ivCatImage)
+                        sharedViewModel.setCatImageUrl(imageUrl)
                     }
-
-                    Glide.with(requireContext()).load(imageUrl).into(binding.ivCatImage)
-                    sharedViewModel.setCatImageUrl(imageUrl)
                 }
             },
             { Log.e("CatApp", "FAILED TO GET RESPONSE") })
@@ -103,7 +101,12 @@ class CatInformationFragment : Fragment() {
             binding.tvCatDescription.text = if(it.has("description")) it.getString("description") else ""
         }
 
+        binding.ivCatImage.setImageResource(R.drawable.cat_app_placeholder)
+
         val imageUrl = sharedViewModel.catImageUrl.value
-        Glide.with(requireContext()).load(imageUrl).into(binding.ivCatImage)
+
+        if(!imageUrl.isNullOrEmpty()){
+            Glide.with(requireContext()).load(imageUrl).into(binding.ivCatImage)
+        }
     }
 }
